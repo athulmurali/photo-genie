@@ -1,0 +1,26 @@
+{
+  "name": "photo-genie",
+  "version": "1.0.0",
+  "description": "A photo utils repo for my needs",
+  "main": "dist/index.js",
+  "bin": {
+    "photo-genie": "dist/index.js"
+  },
+  "scripts": {
+    "build": "vite build",
+    "dev": "ts-node src/cli.ts",
+    "clean": "rm -rf dist"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "commander": "^10.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.0.0",
+    "vite": "^5.0.0",
+    "@types/node": "^20.0.0"
+  }
+}
