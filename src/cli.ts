@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 import { Command } from 'commander';
-import { deleteOrphanArw } from './utils/delete-arw/index';
+import commands from './utils';
 
 const program = new Command();
 
@@ -9,11 +9,9 @@ program
   .description('Photo utilities CLI')
   .version('1.0.0');
 
-program
-  .command('delete-arw <dir>')
-  .description('Delete ARW files without matching JPEGs')
-  .action(async (dir: string) => {
-    await deleteOrphanArw(dir);
-  });
+
+for (const cmd of commands) {
+  program.addCommand(cmd);
+}
 
 program.parseAsync(process.argv);
