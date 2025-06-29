@@ -11,20 +11,20 @@ README.
 Install dependencies and build the CLI:
 
 ```bash
-npm install
-npm run build
+yarn install
+yarn build
 ```
 
 After building, run the compiled CLI:
 
 ```bash
-npx photo-genie <command>
+yarn photo-genie <command>
 ```
 
 During development you can run the CLI via ts-node:
 
 ```bash
-npm run dev -- delete-arw <directory>
+yarn dev delete-arw <directory>
 ```
 
 ## Utilities
