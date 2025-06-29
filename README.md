@@ -35,5 +35,5 @@ Deletes `.ARW` files when a JPEG of the same name is not present. See the [utili
 
 ### list-blurry
 
-Lists JPEG images sorted by blurriness using the [`@bstrickl/blurriness`](https://www.npmjs.com/package/@bstrickl/blurriness) package. See the [utility README](src/utils/list-blurry/README.md) for details.
+Lists JPEG images sorted by blurriness using the [`blurry-detector`](https://www.npmjs.com/package/blurry-detector) package. See the [utility README](src/utils/list-blurry/README.md) for details.
 

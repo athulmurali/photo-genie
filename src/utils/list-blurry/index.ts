@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import { extname, join } from 'path';
 import { Command } from 'commander';
-import { getBlurrinessAsync } from '@bstrickl/blurriness';
+import BlurryDetector from 'blurry-detector';
 
 export interface BlurResult {
   file: string;
@@ -9,7 +9,7 @@ export interface BlurResult {
 }
 
 /**
- * Get JPEG files sorted by blurriness descending.
+ * Get JPEG files sorted from most blurry to least blurry.
  * @param dir directory to scan
  */
 export async function listBlurryFiles(dir: string): Promise<BlurResult[]> {
@@ -19,14 +19,15 @@ export async function listBlurryFiles(dir: string): Promise<BlurResult[]> {
     return ext === '.jpeg' || ext === '.jpg';
   });
 
+  const detector = new BlurryDetector();
   const results: BlurResult[] = [];
   for (const file of jpegs) {
     const path = join(dir, file);
-    const score = await getBlurrinessAsync(path);
-    results.push({ file, score });
+    const variance = await detector.computeLaplacianVariance(path);
+    results.push({ file, score: variance });
   }
 
-  results.sort((a, b) => b.score - a.score);
+  results.sort((a, b) => a.score - b.score);
   return results;
 }
 
